@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+
+        <title>Akash Sharma</title>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="index.css">
+        <script type="text/javascript" src="index.js"></script>
+
+		<link href="https://fonts.googleapis.com/css2?family=Bentham&display=swap" rel="stylesheet">
+    </head>
+    <body>
+		<div class="header">
+			<div class="name">
+				Akash Sharma
+			</div>
+			<div class="links">
+				<a href="mailto: akashsharma@cmu.edu">Email</a> |
+				<a href="data/AkashSharmaResume.pdf">CV</a> |
+				<a href="https://github.com/akashsharma02" target="_blank"><nobr>GitHub</nobr></a> |
+				<a href="https://linkedin.com/in/akashsharma02/" target="_blank">LinkedIn</a>
+			</div>
+			<div class="image">
+
+			</div>
+		</div>
+		<div class="about">
+        I am a student at Carnegie Mellon University pursuing a Master's degree in Robotics.
+        As a member of the Robot Perception Lab, advised by <a href="https://cs.cmu.edu/~kaess">Prof. Michael Kaess</a> at the Robotics Institute,
+        my research focuses on semantically assisted long term robotic mapping and 3D reconstruction through graph-based SLAM.
+        More generally, I am interested in making robotic spatial understanding feasible.
+        <br><br>
+        Before joining CMU, I spent two years as a Software Developer at Infinera, where I developed infrastructure software for fault-tolerant optical communications,
+        that manages long haul internet traffic. I received a Bachelor's degree in Engineering from Sri Jayachamarajendra College of Engineering (SJCE) in 2017, ranking amongst the top 10 students.
+        As an undergraduate student, I have also taught and organized Robotics boot camps at SJCE for freshman students.
+		</div>
+		<div class="main">
+			<div class="menu">
+				<div class="heading">
+					Research
+				</div>
+				<div class="heading">
+					Academic Research
+				</div>
+				<div class="text">
+					<p>Automated Vision Inspection System for Cylindrical Metallic Components</p>
+				</div>
+				<div class="heading">
+					Projects
+				</div>
+				<div class="text">
+					<p>Visual SLAM for Quadrotors in Indoor environments</p>
+					<p>Mobile Inverted Pendulum Robot</p>
+				</div>
+			</div>
+			<div class="body">
+				<div class="heading">
+					Research
+				</div>
+				<div class="textbox">
+					I'm interested in SLAM/SFM, computer vision and robotics in general.
+					Much of my prior experience has been in RGBD SLAM, and controls design for robots.
+				</div>
+                <div class="heading">
+                    Ongoing Projects
+                </div>
+                <div class="imagecontent">
+                    <div class="image" id="opencv">
+
+                    </div>
+                    <div class="title">
+                        Depth Fusion for Large scale environments
+                    </div>
+                    <div class="company">
+                        @ <a href="https://summerofcode.withgoogle.com/projects/#6190777371197440">OpenCV / Google Summer of Code</a>
+                    </div>
+                    <div class="text">
+                        Implemented spatial hashing for TSDF volumes, and working on TSDF submap based graph optimization for drift-free reconstruction of large environments
+                    </div>
+                </div>
+                <div class="imagecontent">
+                    <div class="image" id="objectSlam">
+                    </div>
+                    <div class="title">
+                        Object based dense SLAM for mobile robots
+                    </div>
+                    <div class="company">
+                        @ <a href="http://rpl.ri.cmu.edu/">Robot Perception Lab / CMU</a>
+                    </div>
+                    <div class="text">
+                        We introduce ObjectFusion, a scalable SLAM system that views the world as objects and planes. Leveraging the observation that most indoor environments are structured and occupied by recognizable objects, we present a sparse object graph mapping formulation, amenable to robot planning and dynamic scene tracking and understanding. Using a probabilistic data association method, and a novel way of orienting objects relative to detected planes, we show that this natural representation can enable drift free large scale indoor reconstruction, and enable lifelong SLAM in dynamic environments.
+                    </div>
+                </div>
+				<div class="heading">
+					Previous Research and Projects
+				</div>
+				<div class="imagecontent">
+					<div class="image" id="inspectionSystem">
+
+					</div>
+					<div class="title">
+						Automated Vision Inspection System for Cylindrical Metallic Components
+					</div>
+					<div class="author">
+                        Krithika Govindaraj, B Vaidya, Akash Sharma, T Shreekanth,
+					</div>
+					<div class="published">
+						3rd International Conference on Computing and Communication (IC3 - 2018) Springer, paper
+					</div>
+					<div class="text">
+						Developed a vision inspection system to sort faulty metal parts, in an industrial pipeline
+					</div>
+				</div>
+				<div class="imagecontent">
+					<div class="image" id="quadrotor">
+
+					</div>
+					<div class="title">
+						Visual SLAM for Quadrotors in Indoor environments
+					</div>
+					<div class="author">
+                        Akash Sharma, <a href="https://www.linkedin.com/in/shefali-vajramatti/">Shefali Vajramatti</a>
+					</div>
+					<div class="text">
+						Built a quadrotor that can map and localize itself in a static GPS denied environment.
+					</div>
+				</div>
+				<div class="imagecontent">
+					<div class="image" id="MipRobot">
+
+					</div>
+					<div class="title">
+						Mobile Inverted Pendulum Robot
+					</div>
+					<div class="author">
+                        Akash Sharma,
+                        <a href="https://www.linkedin.com/in/adithya-r-h-536226b0/">Adithya RH</a>,
+                        <a href="https://www.linkedin.com/in/gururaj-kini-69799b114/">Gururaj Kini</a>
+					</div>
+					<div class="text">
+						Built a MIP robot and implemented a PI-PD controller.
+						The robot used stepper motors, and was controlled via an arduino.
+						The robot also included a visual system,
+						which allowed it to follow white lines, and detect faces.
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="name">
+				Akash Sharma
+			</div>
+			<div class="links">
+				<a href="#">Email</a> |
+				<a href="#">CV</a> |
+				<a href="#">Google Scholar</a> |
+				<a href="#">LinkedIn</a>
+			</div>
+			<div class="source">
+				Designed and Developed by <a href="https://ashutoshshrm529.github.io/">Ashutosh Sharma</a>
+			</div>
+		</div>
+    </body>
+</html>
