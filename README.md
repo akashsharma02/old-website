@@ -1,2 +1,3 @@
-# AkashSharma
-A Portfolio Website
+# akashsharma02.github.io
+
+Code for my personal portfolio website
