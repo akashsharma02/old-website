@@ -9,6 +9,13 @@
 }
 
 @font-face {
+    font-family: CMU-Bright-Semibold;
+    src: url("data/fonts/cmunbsr.otf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: CMU-Sans-Serif;
     src: url("data/fonts/cmunss.otf") format('truetype');
     font-weight: bold;
@@ -116,6 +123,26 @@ body
     font-size: calc(14 / 900 * 100vh);
 
     border-bottom: 1px solid #999999;
+}
+
+.updates
+{
+    position: relative;
+    top: 0px;
+
+    width: calc(100% - (200 / 1440 * 100vw));
+
+    padding: calc(20 / 900 * 100vh) calc(100 / 1440 * 100vw);
+    font-family: CMU-Bright-Semibold;
+    font-size: calc(12 / 900 * 100vh);
+
+    border-bottom: 1px solid #999999;
+}
+.updates .heading
+{
+    color: #f2120b;
+    font-size: calc(22 / 900 * 100vh);
+    font-family: 'CMU-Sans-Serif', sans-serif;
 }
 
 .heading
@@ -295,6 +322,7 @@ body
 
     width: 100%;
 
+    font-family: 'CMU-Bright-Oblique', serif;
     font-size: calc(14 / (1440 + 900) * (100vw + 100vh));
     text-align: center;
     color: #999999;
@@ -306,7 +334,7 @@ body
     bottom: calc(10 / 900 * 100vh);
     right: 0px;
 
-    font-size: calc(14 / (1440 + 900) * (100vw + 100vh));
+    font-size: calc(9 / (1440 + 900) * (100vw + 100vh));
     color: #999999;
 }
 
@@ -314,7 +342,7 @@ a
 {
     color: #ff0000;
     text-decoration: none;
-    font-weight: bold;
+    font-family: CMU-Bright-Oblique;
     /* font-style: italic; */
 }
 
@@ -344,11 +372,17 @@ a
         padding-right: calc(20 / 1440 * 100vw);
     }
 
-    .main .body .imagecontent .author,
     .main .body .imagecontent .published,
     .main .body .imagecontent .text
     {
         font-size: calc(12 / (1440 + 900) * (100vw + 100vh));
+    }
+
+    .main .body .imagecontent .author,
+    .main .body .imagecontent .company
+    {
+        font-size: calc(10 / (1440 + 900) * (100vw + 100vh));
+
     }
 
     .main .body .imagecontent .title
