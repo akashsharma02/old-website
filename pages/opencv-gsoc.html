@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+
+        <title>GSoC 2020 - OpenCV</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="../index.css">
+        <link rel="icon" type="image/png" href="../data/images/cmu-seal-r.png">
+        <script type="text/javascript" src="../index.js"></script>
+
+		<link href="https://fonts.googleapis.com/css2?family=Bentham&display=swap" rel="stylesheet">
+    </head>
+    <body>
+		<div class="header">
+			<div class="name">
+				Depth Fusion for Large Scale environments
+			</div>
+			<div class="links">
+				<a href="https://summerofcode.withgoogle.com/serve/4714236871180288/">Project Proposal</a>
+			</div>
+		</div>
+		<div class="about">
+            This project aimed to implement spatial hashing for the TSDF volume datastructure in the OpenCV RGBD module, and leverage the same to build a scalable submap based online 3D scene reconstruction system with little to no drift.<br><br>
+
+            TSDF volumes are widely agreed upon in the research community to be locally consistent with minimal drift, therefore a natural mapping model is a PoseGraph<sup><a href="dummy">[2]</a></sup> of overlapping submaps, each representing a local section of the entire scene. This mapping model allows for periodic global optimization, which corrects accumulating drift retrospectively in the model, as new sensor measurements are incorporated. The following delineates the pipeline.
+            <div class="imagecontent">
+            <div class="image" id="pipeline-submaps">
+                <b>TODO</b>
+            </div>
+            </div>
+
+        This implementation uses the existing Kinect Fusion<sup><a href="dummy">[1]</a></sup> pipeline in OpenCV.
+        </div>
+        <div class="main">
+            <div class="body">
+                <div class="heading">Implementation</div>
+            </div>
+            <div class="textbox">
+                The implementation in OpenCV is built on the following primitives:<br>
+            <b>Hashtable based TSDF Volume</b>:
+
+
+            </div>
+        </div>
+        <div
+		<div class="footer">
+			<div class="name">
+				Akash Sharma
+			</div>
+			<div class="links">
+				<a href="mailto: akashsharma@cmu.edu">Email</a> |
+				<a href="data/AkashSharmaResume.pdf">CV</a> |
+				<a href="https://github.com/akashsharma02" target="_blank"><nobr>GitHub</nobr></a> |
+				<a href="https://linkedin.com/in/akashsharma02/" target="_blank">LinkedIn</a>
+			</div>
+			<div class="source">
+				Credits to my brother <a href="https://ashutoshshrm529.github.io/">Ashutosh Sharma</a> for helping with the design
+			</div>
+		</div>
+    </body>
+</html>
+
