@@ -1,0 +1,302 @@
+/* * { border: 1px solid red; } */
+::-webkit-scrollbar { display: none; }
+
+@font-face {
+    font-family: CMU-Bright;
+    src: url("../data/fonts/cmunbmr.otf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: CMU-Bright-Semibold;
+    src: url("../data/fonts/cmunbsr.otf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: CMU-Sans-Serif;
+    src: url("../data/fonts/cmunss.otf") format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: CMU-Bright-Oblique;
+    src: url("../data/fonts/cmunbmo.otf") format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: CMU-Serif;
+    src: url("../data/fonts/cmunrm.otf") format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+html
+{
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+body
+{
+    position:absolute;
+
+    width: calc(100vw - (100 / 1440 * 100vw));
+    height: 100%;
+
+    padding: 0px calc(50 / 1440 * 100vw);
+    margin: 0px;
+    overflow-y: scroll;
+
+    font-family: 'CMU-Bright', serif;
+    text-align: justify;
+}
+
+.header
+{
+    position: relative;
+
+    width: 100%;
+    height: calc(260 / 900 * 100vh);
+
+    border-bottom: 1px solid #999999;
+}
+
+.header .name
+{
+    position: relative;
+    top: calc(80 / 900 * 100vh);
+    left: calc(80 / 1440 * 100vw);
+    text-align: left;
+
+    font-size: calc(34 / 900 * 100vh);
+    text-transform: capitalize;
+    font-family: 'CMU-Sans-Serif', sans-serif;
+}
+
+.header .links
+{
+    position: relative;
+    top: calc(90 / 900 * 100vh);
+    left: calc(80 / 1440 * 100vw);
+
+    width: calc(600 / 1440 * 100vw);
+
+    font-family: 'CMU-Bright-Oblique', serif;
+    font-size: calc(20 / 900 * 100vh);
+    color: #999999;
+}
+
+.header .image
+{
+    position: absolute;
+    top: calc(50% - (100 / (1440 + 900) * (100vw + 100vh)));
+    right: calc(80 / 1440 * 100vw);
+
+    height: calc(200 / (1440 + 900) * (100vw + 100vh));
+    width: calc(200 / (1440 + 900) * (100vw + 100vh));
+
+    border-radius: calc(30 / (1440 + 900) * (100vw + 100vh));
+
+    background-image: url('data/images/AkashSharma.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.section img
+{
+    max-width: 100%;
+}
+
+.section
+{
+    position: relative;
+    top: 0px;
+
+    width: calc(100% - (200 / 1440 * 100vw));
+
+    padding: calc(20 / 900 * 100vh) calc(100 / 1440 * 100vw);
+    /* font-family: CMU-Bright-Semibold; */
+    font-size: calc(14 / 900 * 100vh);
+
+    border-bottom: 1px solid #999999;
+}
+
+.section .heading
+{
+    color: #f2120b;
+    font-size: calc(22 / 900 * 100vh);
+    font-family: 'CMU-Sans-Serif', sans-serif;
+}
+
+.section .subheading
+{
+    color: #f2120b;
+    font-size: calc(18 / 900 * 100vh);
+    font-family: 'CMU-Sans-Serif', sans-serif;
+    padding-top: 15px;
+}
+
+.bookmark
+{
+    position: relative;
+    width: 100%;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    display: block;
+    border-radius: 7.5px;
+}
+
+.bookmark-info
+{
+    max-width: 77.5%;
+    margin: 5px;
+    text-align: left;
+    overflow: hidden;
+}
+
+.bookmark-title
+{
+    font-size: calc(16 / 900 * 100vh);
+    color: #000000;
+    height: calc(25 / 900 * 100vh);
+    font-family: 'CMU-Sans-Serif', sans-serif;
+    overflow: hidden;
+}
+
+.bookmark-description
+{
+    font-size: calc(12 / 900 * 100vh);
+    color: #37352f;
+    opacity: 0.6;
+    height: calc(50 / 900 * 100vh);
+    font-family: 'CMU-Sans-Serif', sans-serif;
+    overflow: hidden;
+
+    padding-bottom: 3px;
+}
+
+.bookmark-icon
+{
+    height: calc(14 / 900 * 100vh);
+    position: relative;
+    top: 2px;
+}
+
+.bookmark-href
+{
+    font-size: calc(14 / 900 * 100vh);
+    height: calc(18 / 900 * 100vh);
+    overflow: hidden;
+}
+
+.bookmark-image
+{
+    position: absolute;
+    top: 15%;
+    height: 70%;
+    right: 2.5%;
+}
+
+.equation
+{
+    font-size: calc(18 / 900 * 100vh);
+    text-align: center
+}
+
+.operator
+{
+    font-size: calc(40 / 900 * 100vh);
+    position: relative;
+    top: calc(4 / 900 * 100vh);
+}
+
+b
+{
+    color: #f2120b;
+}
+
+.code
+{
+    background-color: rgba(135, 131, 120, 0.15);
+    color: #eb5757;
+    font-family: monospace;
+    font-size: 85%;
+    padding: 0px calc(3 / 900 * 100vh);
+}
+
+.heading
+{
+    color: #f2120b;
+    font-family: 'CMU-Sans-Serif', sans-serif;
+}
+
+.footer
+{
+    position: relative;
+
+    width: 100%;
+    height: calc(200 / 900 * 100vh);
+}
+
+.footer .name
+{
+    position: relative;
+    top: calc(60 / 900 * 100vh);
+    left: 0px;
+
+    width: 100%;
+
+    font-size: calc(20 / (1440 + 900) * (100vw + 100vh));
+
+    text-align: center;
+    font-family: 'CMU-Sans-Serif', sans-serif;
+}
+
+.footer .links
+{
+    position: relative;
+    top: calc(60 / 900 * 100vh);
+    left: 0px;
+
+    width: 100%;
+
+    font-family: 'CMU-Bright-Oblique', serif;
+    font-size: calc(14 / (1440 + 900) * (100vw + 100vh));
+    text-align: center;
+    color: #999999;
+}
+
+.footer .source
+{
+    position: absolute;
+    bottom: calc(10 / 900 * 100vh);
+    right: 0px;
+
+    font-size: calc(12 / (1440 + 900) * (100vw + 100vh));
+    color: #999999;
+}
+
+a
+{
+    color: #ff0000;
+    text-decoration: none;
+    font-family: CMU-Bright-Oblique;
+}
+
+@media only screen and (min-width: 768px) {
+    body
+    {
+        width: calc(100vw - (600 / 1440 * 100vw));
+        padding: 0px calc(300 / 1440 * 100vw);
+    }
+}

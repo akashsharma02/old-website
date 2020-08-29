@@ -4,48 +4,261 @@
         <meta charset="utf-8">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
 
-        <title>GSoC 2020 - OpenCV</title>
+        <title>Depth Fusion For Large Scale Environments</title>
+
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="../index.css">
+        <link rel="stylesheet" href="opencv-gsoc.css">
         <link rel="icon" type="image/png" href="../data/images/cmu-seal-r.png">
-        <script type="text/javascript" src="../index.js"></script>
 
 		<link href="https://fonts.googleapis.com/css2?family=Bentham&display=swap" rel="stylesheet">
     </head>
     <body>
 		<div class="header">
 			<div class="name">
-				Depth Fusion for Large Scale environments
+				Depth Fusion For Large Scale Environments
 			</div>
 			<div class="links">
 				<a href="https://summerofcode.withgoogle.com/serve/4714236871180288/">Project Proposal</a>
 			</div>
 		</div>
-		<div class="about">
-            This project aimed to implement spatial hashing for the TSDF volume datastructure in the OpenCV RGBD module, and leverage the same to build a scalable submap based online 3D scene reconstruction system with little to no drift.<br><br>
-
-            TSDF volumes are widely agreed upon in the research community to be locally consistent with minimal drift, therefore a natural mapping model is a PoseGraph<sup><a href="dummy">[2]</a></sup> of overlapping submaps, each representing a local section of the entire scene. This mapping model allows for periodic global optimization, which corrects accumulating drift retrospectively in the model, as new sensor measurements are incorporated. The following delineates the pipeline.
-            <div class="imagecontent">
-            <div class="image" id="pipeline-submaps">
-                <b>TODO</b>
+		<div class="section">
+            <div class="heading">
+                Abstract
             </div>
+            <p>
+                This project aimed to implement spatial hashing for the TSDF volume data structure in the OpenCV RGBD module,
+                and leverage the same to build a scalable submap based online 3D scene reconstruction system with little to no drift.
+            </p>
+            <p>
+                TSDF volumes are widely agreed upon in the research community to be locally consistent with minimal drift,
+                therefore a natural mapping model is a PoseGraph[2] of overlapping submaps,
+                each representing a local section of the entire scene. This mapping model allows for periodic global optimization,
+                which corrects accumulating drift retrospectively in the model,
+                as new sensor measurements are incorporated.
+            </p>
+            <img src="../data/images/opencv-large-kinfu-pipeline.png" alt="">
+            <p>
+                The following delineates the pipeline.
+            </p>
+		</div>
+        <div class="section">
+            <div class="heading">
+                Implementation
+            </div>
+            <p>The implementation in OpenCV contains the following primitives:</p>
+
+            <div class="subheading">2.1. Hash-table based TSDF volume</div>
+
+            <p>
+                This implementation is based on the seminal work Voxel hashing (Matthias Neisner et al.).
+                A regular TSDF volume represents a scene as a 3D volume grid of (truncated) signed distance functions.
+                These truncated signed distance functions are simply the shortest distance of each point to its closest surface.
+                While this is simple to implement, this constrains a user to reconstruct scenes of limited size,
+                since the volume size has to be preallocated.
+            </p>
+
+            <p>
+                The Hash based volume, stores the volume as an <span class="code">unordered_map</span> of smaller TSDF volume units (<span class="code">volumeUnits</span>),
+                each representing canonically 8<sup>3</sup> or 16<sup>3</sup> resolution.
+                These volume units are indexed by a 3 dimensional Vector,
+                which is hashed appropriately to minimise the number of hash collisions[3].
+            </p>
+
+            <p>
+                This TSDF volume requires the following important functionalities:
+            </p>
+
+            <ul>
+                <li>
+                    <b>Integration:</b> During Integration, the TSDF volume automatically allocates new volume units,
+                    checking for existing volume units in the current viewing camera frustrum.
+                    Integration follows by delegating the task to individual volume units parallely,
+                    once the list of volume units to be integrated has been determined.
+                </li>
+                <br>
+                <li>
+                    <b>Raycasting:</b> Raycasting is required to render the TSDF volume into a virtual image, that is used for tracking.
+                    Typically, for each pixel of the to-be generated image, a ray is marched in the volume with fixed steps to
+                    obtain an estimated surface distance measurement.
+                    In the <span class="code">HashTSDFVolume</span> we get significant performance improvements since we can skip/jump over volume units
+                    (typically around 16 voxels length) that are away from the surface.
+                </li>
+            </ul>
+
+            <p>
+                The following PR provides a CPU implementation of Hash-table TSDF volume in OpenCV:
+            </p>
+
+            <a href="https://github.com/opencv/opencv_contrib/pull/2566" class="bookmark">
+                <div class="bookmark-info">
+                    <div class="bookmark-text">
+                        <div class="bookmark-title">
+                            [GSoC] Add new Hashtable based TSDF volume to RGBD module by akashsharma02 · Pull Request #2566 · opencv/opencv_contrib
+                        </div>
+                        <div class="bookmark-description">
+                            This work is part of GSoC and is potentially for the first evaluation phase of the program.
+                            My mentor for the GSoC time period is: @savuor My proposal is available here: https://summerofcode.withgoogle.com/dashboard/project/6190777371197440/details/
+                            Please note that this is still Work in Progress,
+                            as the system is not yet reliable and does not work well.
+                        </div>
+                    </div>
+                    <div class="bookmark-href">
+                        <img src="https://github.com/favicon.ico" class="icon bookmark-icon">
+                        https://github.com/opencv/opencv_contrib/pull/2566
+                    </div>
+                </div>
+                <img src="https://avatars3.githubusercontent.com/u/5009934?s=400&amp;v=4" class="bookmark-image">
+            </a>
+
+            <div class="subheading">2.2. Submap</div>
+
+            <p>
+                The submap class is an abstraction over the <span class="code">hashTSDF</span> volume to support the <span class="code">large_kinfu</span> pipeline.
+                Some questions that are especially relevant with submap based 3D reconstruction are:
+            </p>
+
+            <ol>
+                <li>What is the appropriate size of the submap volume? </li>
+                <li>When do you terminate and initialize a new submap?</li>
+                <li>How do you track and create constraints between multiple submaps in a scene for downstream optimization of poses?</li>
+            </ol>
+
+            <p>
+                We address question 1. and 2. by using a camera overlap metric, which states that if the current camera frame consistently views -
+                for a threshold number of frames - a new set of volume units that are only allocated recently and haven't been part of the older
+                frames, then it means that the camera must have moved to a new part of the scene.[4] Once a new submap is instantiated,
+                we initialize it with a submap <b>SE(3)﻿</b> pose of the frame at which it was created.
+            </p>
+
+            <p>
+                We maintain a list of active submaps, all of which are simultaneously tracked at each time-step.
+                The simultaneous tracking provides us with a camera pose w.r.t each submap as
+                T<sup>t</sup><sub>s<sub>i</sub></sub><sub>c</sub> where s<sub>i</sub> represents the i<sup>th</sup> submap coordinate frame,
+                <i>c</i> represents the camera coordinate frame and <i>t</i>﻿ represents the current time-step.
+                The relative constraint at each time-step between submap s<sub>j</sub> and s<sub>i</sub> can be obtained as:
+            </p>
+
+            <div class="equation">
+                T<sup>t</sup><sub>s<sub>j</sub></sub><sub>s<sub>i</sub></sub>=T<sup>t</sup><sub>s<sub>i</sub></sub><sub>c</sub><sup>−1</sup>
+                <span class="operator">&#8728;</span>
+                T<sup>t</sup><sub>s<sub>j</sub></sub><sub>c</sub>
             </div>
 
-        This implementation uses the existing Kinect Fusion<sup><a href="dummy">[1]</a></sup> pipeline in OpenCV.
+            <p>
+                A robust estimate of the constraints between submaps over multiple timesteps is
+                then obtained using a simple implementation of Iteratively Reweighted Least Squares (IRLS),
+                which eliminates outlier constraint estimates using the Huber norm.[4]
+            </p>
+
+            <div class="subheading">2.3 PoseGraph optimization</div>
+
+            <p>
+                Once we have a scene containing dynamically created submaps, we are required to optimize the submap poses to eliminate accumulating camera tracking drift and improved reconstruction
+            </p>
+
+            <p>
+                We implement a simple <span class="code">PoseGraph</span> class, and implement second order optimization methods such as <i>Gauss Newton</i>, and <i>Levenberg Marquardt</i>.
+            </p>
+
+            <p>
+                The idea here is to abstract the submaps as nodes of 3D <b>SE(3)</b>﻿ poses, and to use the sensor measurements i.e.,
+                the robust Pose Constraints between submaps, as obtained from the previous section to correct the pose estimates.
+                For a given submap pair s<sub>j</sub> and s<sub>i</sub> with an existing pose constraint<span style="position: relative; left: 8px; bottom: 5px; transfrom: scale(4,0.5) display: inline-block">^</span>T<sub>s<sub>j</sub></sub><sub>s<sub>i</sub></sub>,
+                we formulate an error metric (factor) as follows:
+            </p>
+
+            <div class="equation">
+                r = <span style="position: relative; left: 11px; bottom: 8px; transfrom: scale(4,0.5) display: inline-block">^</span>T<sub>s<sub>j</sub></sub><sub>s<sub>i</sub></sub> &#8861; (T<sub>s<sub>i</sub></sub><sub>c</sub> &#8861; T<sub>s<sub>j</sub></sub><sub>c</sub>)
+            </div>
+
+            <p>
+                Where &#8861; denotes the <b>SE(3)﻿</b> right composition i.e., A &#8861; B &#8796; q Log(B<sup>-1</sup> <span class="operator">&#8728;</span> A )[5]
+            </p>
+
+            <p>
+                We minimize the residual rr﻿ by linearizing the function and then solving the linear system of equations using a
+                <i>Cholesky</i> solver or a QR solver.
+                (We leverage <span class="code">Eigen</span> library for the linear system solver).[2]
+            </p>
+
+            <p>
+                <b>NOTE:</b> Currently, the implementation of <i>Levenberg Marquardt</i> is unstable,
+                and thus for the time being <span class="code">Ceres</span> library is used for the same[6].
+                However, we will refine the implementation of the optimizer to make the module
+                dependency-free in the future.
+            </p>
+
+            <p>The following Pull Request implements the <span class="code">Submap</span> and <span class="code">PoseGraph</span> optimization: </p>
+
+            <a href="https://github.com/opencv/opencv_contrib/pull/2619">
+                <div class="bookmark">
+                    <div class="bookmark-info">
+                        <div class="bookmark-text">
+                            <div class="bookmark-title">
+                                [GSoC] [WIP] Add Submaps and PoseGraph optimization for Large Scale Depth Fusion by akashsharma02 · Pull Request #2619 · opencv/opencv_contrib
+                            </div>
+                            <div class="bookmark-description">
+                                This work is part of GSoC and is for the 2nd and 3rd part of the evaluation phase of the program.
+                                My mentor for the GSoC time period is: @savuor
+                                My proposal is available here: https://summerofcode.withgoogle.com/dashboard/project/6190777371197440/details/
+                                Checklist before review: Track multiple submaps simultaneously Posegraph data structure and Optimizer
+                                (Uses Ceres for PoseGraph optimization)
+                                Add support for computing constraints between submaps (In progress/Partially done) Relocalization of tracking (Dropping for GSoC.
+                            </div>
+                        </div>
+                        <div class="bookmark-href">
+                            <img src="https://github.com/favicon.ico" class="bookmark-icon">
+                            https://github.com/opencv/opencv_contrib/pull/2519
+                        </div>
+                    </div>
+                    <img src="https://avatars3.githubusercontent.com/u/5009934?s=400&amp;v=4" class="bookmark-image">
+                </div>
+            </a>
         </div>
-        <div class="main">
-            <div class="body">
-                <div class="heading">Implementation</div>
+        <div class="section">
+            <div class="heading">
+                Extensions and Future Work
             </div>
-            <div class="textbox">
-                The implementation in OpenCV is built on the following primitives:<br>
-            <b>Hashtable based TSDF Volume</b>:
-
-
+            <p>
+                A large omission in this work is the Relocalization module that is imperative to prevent spurious
+                creation of submaps when the camera revisits previously created submap sections.
+                I plan to add this extension after GSoC.
+            </p>
+            <p>
+                Typically <i>relocalization</i> modules are implemented using <i>Fast Bag of Words</i> or <i>Dynamic Bag of Words (FBoW, DBoW2/3)</i> [7] methods,
+                which maintain a vocabulary of distinct keyframes as bag of words which can be quickly queried during tracking to detect cases of
+                loop closure and can be used for camera relocalization if tracking fails.
+            </p>
+		</div>
+        <div class="section">
+            <div class="heading">
+                Acknowledgements
             </div>
-        </div>
-        <div
+            <p>
+                It has been very pleasant working with my mentor <i>Rostislav Vasilikhin</i>,
+                (and with <i>Mihai Bujanca</i>), who was enthusiastic
+                and forthcoming with all the issues during the 3 months of Google Summer of Code.
+            </p>
+            <p>
+                It was especially rewarding and pedagogic implementing modules that form the basis of most Dense SLAM systems today,
+                and the added benefit of making a significant open-source contribution in the process has made summer of 2020 worthwhile and interesting.
+            </p>
+            <p>
+                I would like to thank Google for this opportunity as well!
+            </p>
+		</div>
+        <div class="section">
+            <div class="heading">
+                References
+            </div>
+            <p> [1] Kinect Fusion </p>
+            <p> [2] Factor Graphs for Robot Perception </p>
+            <p> [3] Boost hashing for Vectors </p>
+            <p> [4] Olaf Kahler et al. ECCV 2016 </p>
+            <p> [5] A micro lie theory for state estimation in robotics </p>
+            <p> [6] Ceres library </p>
+		</div>
 		<div class="footer">
 			<div class="name">
 				Akash Sharma
@@ -62,4 +275,3 @@
 		</div>
     </body>
 </html>
-

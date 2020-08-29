@@ -125,6 +125,11 @@ body
     border-bottom: 1px solid #999999;
 }
 
+.about img
+{
+    width: 100%;
+}
+
 .updates
 {
     position: relative;
@@ -335,7 +340,7 @@ body
     bottom: calc(10 / 900 * 100vh);
     right: 0px;
 
-    font-size: calc(9 / (1440 + 900) * (100vw + 100vh));
+    font-size: calc(12 / (1440 + 900) * (100vw + 100vh));
     color: #999999;
 }
 
