@@ -60,6 +60,11 @@ body
     text-align: justify;
 }
 
+iframe {
+    display: block;
+    margin: 0 auto;
+    border-style:none;
+}
 .header
 {
     position: relative;
