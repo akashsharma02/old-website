@@ -41,7 +41,7 @@
 		</div>
 		<div class="about">
         I am a student at Carnegie Mellon University pursuing a Master's degree in Robotics.
-        As a member of the Robot Perception Lab, advised by <a href="https://cs.cmu.edu/~kaess">Prof. Michael Kaess</a> at the Robotics Institute,
+        As a member of the <a href="http://rpl.ri.cmu.edu/">Robot Perception Lab</a>, advised by <a href="https://cs.cmu.edu/~kaess">Prof. Michael Kaess</a> at the Robotics Institute,
         my research focuses on semantically assisted long term robotic mapping and 3D reconstruction through graph-based SLAM.
         More generally, I am interested in making robotic spatial understanding feasible.
         <br><br>
@@ -54,41 +54,66 @@
                 Updates
             </div>
             <ul>
-                <li>[July 2020] I am collaborating with <a href="https://www.cs.cmu.edu/~katef/">Prof. Katerina Fragkiadaki</a> on learning camera egomotion from data</li>
-                <li>[June 2020] I will be TAing for 16833 - Robot localization and Mapping at CMU!</li>
+                <li>[Dec 2020] I am a reviewer for ICRA 2021
+                <li>[Jul 2020] I am collaborating with <a href="https://www.cs.cmu.edu/~katef/">Prof. Katerina Fragkiadaki</a> on learning camera egomotion from data</li>
+                <li>[Jun 2020] I am a teaching assistant for 16833 - Robot Localization and Mapping at CMU!</li>
                 <li>[May 2020] I am participating in GSoC 2020 with <a href="https://github.com/opencv/opencv/wiki/GSoC_2020">OpenCV</a>
             </ul>
         </div>
 		<div class="main">
-			<div class="menu">
-				<div class="heading">
-					Research
-				</div>
-				<div class="heading">
-                    Ongoing Projects
-				</div>
-				<div class="text">
-                    <p>Depth Fusion for Large scale environments</p>
-                    <p>Object based dense SLAM for mobile robots</p>
-				</div>
-				<div class="heading">
-					Projects
-				</div>
-				<div class="text">
-					<p>Visual SLAM for Quadrotors in Indoor environments</p>
-					<p>Mobile Inverted Pendulum Robot</p>
-					<p>Automated Vision Inspection System for Cylindrical Metallic Components</p>
-				</div>
-			</div>
+			<!-- <div class="menu"> -->
+			<!-- 	<div class="heading"> -->
+			<!-- 		Research -->
+			<!-- 	</div> -->
+			<!-- 	<div class="heading"> -->
+                    <!-- Ongoing Projects -->
+			<!-- 	</div> -->
+			<!-- 	<div class="text"> -->
+                    <!-- <p>Depth Fusion for Large scale environments</p> -->
+                    <!-- <p>Object based dense SLAM for mobile robots</p> -->
+			<!-- 	</div> -->
+			<!-- 	<div class="heading"> -->
+			<!-- 		Projects -->
+			<!-- 	</div> -->
+			<!-- 	<div class="text"> -->
+			<!-- 		<p>Visual SLAM for Quadrotors in Indoor environments</p> -->
+			<!-- 		<p>Mobile Inverted Pendulum Robot</p> -->
+			<!-- 		<p>Automated Vision Inspection System for Cylindrical Metallic Components</p> -->
+			<!-- 	</div> -->
+			<!-- </div> -->
 			<div class="body">
+
+                <div class="research">
 				<div class="heading">
 					Research
 				</div>
 				<div class="textbox">
-					I'm interested in SLAM, and 3D Reconstrction in specific, and Computer Vision, Robotics and Graphics in general. My research aim is to incorporate learning in SLAM, and make SLAM robust to ambiguous posteriors.
+					I'm interested in SLAM, and 3D Reconstruction in specific, and Computer Vision, Robotics and Graphics in general. My research aim is to incorporate learning in SLAM, and make SLAM robust to ambiguous posteriors.
 				</div>
+                </div>
+
+                <div class="projects">
                 <div class="heading">
                     Ongoing Projects
+                </div>
+                <div class="imagecontent">
+                    <div class="image" id="objectSlam">
+                    </div>
+                    <div class="title">
+                        Compositional Scalable Object SLAM
+                    </div>
+                    <div class="author">
+                        Akash Sharma, <a href="https://dongwei.info">Wei Dong</a>, <a href="https://www.cs.cmu.edu/~kaess/">Michael Kaess</a>
+                    </div>
+                    <div class="published">
+                        Submitted to International Conference on Robotics and Automation (ICRA) 2021
+                    </div>
+                    <div class="company">
+                        @ <a href="http://rpl.ri.cmu.edu/">Robot Perception Lab / CMU</a>
+                    </div>
+                    <div class="text">
+                        <a href="https://arxiv.org/abs/2011.02658">[paper]</a> / [code coming soon]
+                    </div>
                 </div>
                 <div class="imagecontent">
                     <div class="image" id="opencv">
@@ -101,77 +126,85 @@
                         @ <a href="https://summerofcode.withgoogle.com/projects/#6190777371197440">OpenCV / Google Summer of Code</a>
                     </div>
                     <div class="text">
-                        Implemented spatial hashing for TSDF volumes, and working on TSDF submap based graph optimization for drift-free reconstruction of large environments
+                        <a href="pages/opencv-gsoc.html">[blogpost]</a> / <a href="https://youtu.be/9dAMAvh2Em4">[feature]</a>
                     </div>
                 </div>
-                <div class="imagecontent">
-                    <div class="image" id="objectSlam">
+                </div>
+                <div class="bottomborder"></div>
+
+                <div class="projects">
+                    <div class="heading">
+                        Previous Research and Projects
                     </div>
-                    <div class="title">
-                        Object based dense SLAM for mobile robots
+                    <div class="imagecontent">
+                        <div class="image" id="quadrotor">
+
+                        </div>
+                        <div class="title">
+                            Visual SLAM for Quadrotors in Indoor environments
+                        </div>
+                        <div class="author">
+                            Akash Sharma, <a href="https://www.linkedin.com/in/shefali-vajramatti/">Shefali Vajramatti</a>
+                        </div>
+                        <div class="text">
+                            Built a quadrotor that can map and localize itself in a static GPS denied environment.
+                        </div>
                     </div>
-                    <div class="company">
-                        @ <a href="http://rpl.ri.cmu.edu/">Robot Perception Lab / CMU</a>
+                    <div class="imagecontent">
+                        <div class="image" id="MipRobot">
+
+                        </div>
+                        <div class="title">
+                            Mobile Inverted Pendulum Robot
+                        </div>
+                        <div class="author">
+                            Akash Sharma,
+                            <a href="https://www.linkedin.com/in/adithya-r-h-536226b0/">Adithya RH</a>,
+                            <a href="https://www.linkedin.com/in/gururaj-kini-69799b114/">Gururaj Kini</a>
+                        </div>
+                        <div class="text">
+                            Built a MIP robot and implemented a PI-PD controller.
+                            The robot used stepper motors, and was controlled via an arduino.
+                            The robot also included a visual system,
+                            which allowed it to follow white lines, and detect faces.
+                        </div>
                     </div>
-                    <div class="text">
-                        We introduce ObjectFusion, a scalable SLAM system that views the world as objects and planes. Leveraging the observation that most indoor environments are structured and occupied by recognizable objects, we present a sparse object graph mapping formulation, amenable to robot planning and dynamic scene tracking and understanding. Using a probabilistic data association method, and a novel way of orienting objects relative to detected planes, we show that this natural representation can enable drift free large scale indoor reconstruction, and enable lifelong SLAM in dynamic environments.
+                    <div class="imagecontent">
+                        <div class="image" id="inspectionSystem"></div>
+                        <div class="title">
+                            Automated Vision Inspection System for Cylindrical Metallic Components
+                        </div>
+                        <div class="author">
+                            <a href="https://www.linkedin.com/in/krithika-govindaraj">Krithika Govindaraj</a>, B Vaidya, Akash Sharma, <a href="https://www.linkedin.com/in/dr-shreekanth-t-ba740a12a/">T Shreekanth</a>
+                        </div>
+                        <div class="published">
+                            3rd International Conference on Computing and Communication (IC3 - 2018) Springer, paper
+                        </div>
+                        <div class="text">
+                            Developed a vision inspection system to sort faulty metal parts, in an industrial pipeline
+                        </div>
                     </div>
                 </div>
-				<div class="heading">
-					Previous Research and Projects
-				</div>
-				<div class="imagecontent">
-					<div class="image" id="quadrotor">
+                <div class="bottomborder"></div>
 
-					</div>
-					<div class="title">
-						Visual SLAM for Quadrotors in Indoor environments
-					</div>
-					<div class="author">
-                        Akash Sharma, <a href="https://www.linkedin.com/in/shefali-vajramatti/">Shefali Vajramatti</a>
-					</div>
-					<div class="text">
-						Built a quadrotor that can map and localize itself in a static GPS denied environment.
-					</div>
-				</div>
-				<div class="imagecontent">
-					<div class="image" id="MipRobot">
-
-					</div>
-					<div class="title">
-						Mobile Inverted Pendulum Robot
-					</div>
-					<div class="author">
-                        Akash Sharma,
-                        <a href="https://www.linkedin.com/in/adithya-r-h-536226b0/">Adithya RH</a>,
-                        <a href="https://www.linkedin.com/in/gururaj-kini-69799b114/">Gururaj Kini</a>
-					</div>
-					<div class="text">
-						Built a MIP robot and implemented a PI-PD controller.
-						The robot used stepper motors, and was controlled via an arduino.
-						The robot also included a visual system,
-						which allowed it to follow white lines, and detect faces.
-					</div>
-				</div>
-				<div class="imagecontent">
-					<div class="image" id="inspectionSystem">
-
-					</div>
-					<div class="title">
-						Automated Vision Inspection System for Cylindrical Metallic Components
-					</div>
-					<div class="author">
-                        <a href="https://www.linkedin.com/in/krithika-govindaraj">Krithika Govindaraj</a>, B Vaidya, Akash Sharma, <a href="https://www.linkedin.com/in/dr-shreekanth-t-ba740a12a/">T Shreekanth</a>
-					</div>
-					<div class="published">
-						3rd International Conference on Computing and Communication (IC3 - 2018) Springer, paper
-					</div>
-					<div class="text">
-						Developed a vision inspection system to sort faulty metal parts, in an industrial pipeline
-					</div>
-				</div>
-			</div>
-		</div>
+                <div class="service">
+                    <div class="heading">
+                        Teaching and Service
+                    </div>
+                    <div class="imagecontent">
+                        <div class="image" id="icra"></div>
+                        <div class="published">
+                            Reviewer: International Conference on Robotics and Automation (ICRA) 2021
+                        </div>
+                    </div>
+                    <div class="imagecontent">
+                        <div class="image" id="cmuri"></div>
+                        <div class="published">
+                            Fall 2020: Teaching assistant for 16833 - Robot Localization and Mapping (SLAM)
+                        </div>
+                    </div>
+                </div>
+            </div>
 		<div class="footer">
 			<div class="name">
 				Akash Sharma
