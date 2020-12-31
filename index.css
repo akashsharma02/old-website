@@ -64,7 +64,7 @@ body
     position: relative;
 
     width: 100%;
-    height: calc(240 / 900 * 100vh);
+    height: calc(250 / 900 * 100vh);
 
     border-bottom: 1px solid #999999;
 }
