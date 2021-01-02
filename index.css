@@ -69,6 +69,14 @@ body
     font-family: 'CMU-Bright', serif;
     text-align: justify;
 }
+
+
+a
+{
+    text-decoration: none;
+    color: #3D3D3D;
+}
+
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: #FBEBD8;
@@ -352,6 +360,22 @@ body
     padding-left: calc(30 / 1440 * 100vw);
 }
 
+.main .body .projects .imagecontent .links
+{
+    position: relative;
+    left: calc(175 / (1440 + 900) * (100vw + 100vh));
+    width: calc(100% - (200 / (1440 + 900) * (100vw + 100vh)));
+
+    font-family: 'CMU-Typewriter-Light';
+    font-size: calc(14 / (1440 + 900) * (100vw + 100vh));
+    padding-top: calc(5 / 900 * 100vh);
+    padding-left: calc(30 / 1440 * 100vw);
+}
+.main .body .projects .imagecontent .links a
+{
+    color: #E53C38
+}
+
 .footer
 {
     position: relative;
@@ -376,6 +400,7 @@ body
     font-family: 'CMU-Sans-Serif', sans-serif;
 }
 
+
 .footer .links
 {
     position: relative;
@@ -398,13 +423,6 @@ body
 
     font-size: calc(12 / (1440 + 900) * (100vw + 100vh));
     color: #999999;
-}
-
-a
-{
-    color: #ff0000;
-    text-decoration: none;
-    font-family: CMU-Bright-Oblique;
 }
 
 @media only screen and (min-width: 600px) {
