@@ -36,6 +36,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: CMU-Typewriter-Light;
+    src: url("data/fonts/cmunbtl.otf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 html
 {
@@ -51,12 +58,43 @@ body
 
     width: calc(100vw - (100 / 1440 * 100vw));
     height: 100%;
+    padding: 0px calc(50 / 1440 * 100vw);
 
     margin: 0px;
     overflow-y: scroll;
 
+    background-color: #FFFAEF;
+    color: #3D3D3D;
+
     font-family: 'CMU-Bright', serif;
     text-align: justify;
+}
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #FBEBD8;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #D11D27;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #E53C38;
+  color: #FFFAEF;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #D11D27;
+  color: white;
 }
 
 .header
@@ -105,7 +143,7 @@ body
 
     border-radius: calc(30 / (1440 + 900) * (100vw + 100vh));
 
-    background-image: url('data/images/AkashSharma.jpg');
+    background-image: url('data/images/akashsharma_mit.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -165,29 +203,14 @@ body
     margin: calc(30 / 900 * 100vh) 0px;
 }
 
-/* .main .menu */
-/* { */
-/*     position: absolute; */
-
-/*     width: 0px; */
-/*     overflow: hidden; */
-
-/*     color: #999999; */
-/* } */
-
-/* .main .menu .heading */
-/* { */
-/*     font-size: calc(15 / 900 * 100vh); */
-/*     padding: calc(10 / 900 * 100vh) 0px; */
-/* } */
-
-/* .main .menu .text */
-/* { */
-/*     font-size: calc(12 / 900 * 100vh); */
-/*     padding: calc(5 / 900 * 100vh) 0px; */
-/* } */
-
 .main .body
+{
+    position: relative;
+    width: calc(100% - (200 / 1440 * 100vw));
+    padding: calc(10 / 900 * 100vh) calc(100 / 1440 * 100vw);
+}
+
+.main .body .research
 {
     position: relative;
     width: 100%;
@@ -196,13 +219,19 @@ body
 .main .body .research .heading
 {
     font-size: calc(22 / 900 * 100vh);
-    padding: calc(10 / 900 * 100vh) 0px;
 }
 
 .main .body .research .textbox
 {
     font-size: calc(12 / 900 * 100vh);
-    padding: calc(15 / 900 * 100vh) 0px;
+    padding: calc(10 / 900 * 100vh) calc(50 / 1440 * 100vw);
+    border-bottom: 1px solid #999999;
+}
+
+.main .body .projects
+{
+    position: relative;
+    width: 100%;
     border-bottom: 1px solid #999999;
 }
 
@@ -212,22 +241,12 @@ body
     padding: calc(10 / 900 * 100vh) 0px;
 }
 
-.main .body .bottomborder
-{
-    font-size: calc(12 / 900 * 100vh);
-    padding: calc(15 / 900 * 100vh) 0px;
-
-    border-bottom: 1px solid #999999;
-}
-
 .main .body .projects .imagecontent
 {
     position: relative;
-
     width: 100%;
-    min-height: calc(150 / (1440 + 900) * (100vw + 100vh));;
-
-    margin: calc(25 / 900 * 100vh) 0px;
+    min-height: calc(160 / (1440 + 900) * (100vw + 100vh));;
+    margin: calc(15 / 900 * 100vh) 0px;
 }
 
 .main .body .projects .imagecontent .image
@@ -242,48 +261,6 @@ body
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.main .body .service .heading
-{
-    font-size: calc(22 / 900 * 100vh);
-    padding: calc(10 / 900 * 100vh) 0px;
-}
-
-.main .body .service .imagecontent
-{
-    position: relative;
-
-    width: 100%;
-    min-height: calc(90 / (1440 + 900) * (100vw + 100vh));;
-
-    margin: calc(15 / 900 * 100vh) 0px;
-}
-
-.main .body .service .imagecontent .image
-{
-    position: absolute;
-
-    height: calc(90 / (1440 + 900) * (100vw + 100vh));
-    width: calc(120 / (1440 + 900) * (100vw + 100vh));
-
-    background-color: #ffffff;
-    border-radius: calc(30 / 900 * 100vh);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.main .body .service .imagecontent .published
-{
-    position: relative;
-    left: calc(175 / (1440 + 900) * (100vw + 100vh));
-
-    width: calc(100% - (200 / (1440 + 900) * (100vw + 100vh)));
-
-    font-size: calc(16 / (1440 + 900) * (100vw + 100vh));
-    padding-top: calc(5 / 900 * 100vh);
-    padding-left: calc(30 / 1440 * 100vw);
 }
 
 #opencv
@@ -324,7 +301,18 @@ body
     background-size: contain;
 }
 
-.main .body .projects .imagecontent .title,
+.main .body .projects .imagecontent .title
+{
+    position: relative;
+    left: calc(175 / (1440 + 900) * (100vw + 100vh));
+
+    width: calc(100% - (200 / (1440 + 900) * (100vw + 100vh)));
+
+    font-size: calc(18 / (1440 + 900) * (100vw + 100vh));
+    /* padding-top: calc(5 / 900 * 100vh); */
+    padding-left: calc(30 / 1440 * 100vw);
+}
+
 .main .body .projects .imagecontent .published
 {
     position: relative;
@@ -332,7 +320,8 @@ body
 
     width: calc(100% - (200 / (1440 + 900) * (100vw + 100vh)));
 
-    font-size: calc(15 / (1440 + 900) * (100vw + 100vh));
+    font-family: CMU-Sans-Serif;
+    font-size: calc(14 / (1440 + 900) * (100vw + 100vh));
     padding-top: calc(5 / 900 * 100vh);
     padding-left: calc(30 / 1440 * 100vw);
 }
@@ -418,17 +407,11 @@ a
     font-family: CMU-Bright-Oblique;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 600px) {
     body
     {
         width: calc(100vw - (600 / 1440 * 100vw));
         padding: 0px calc(300 / 1440 * 100vw);
-    }
-
-    .main .menu
-    {
-        width: calc(28% - (60 / 1440 * 100vw));
-        padding: 0px calc(30/ 1440 * 100vw);
     }
 
     .main .body
@@ -440,23 +423,5 @@ a
     .main .body .textbox
     {
         padding-right: calc(20 / 1440 * 100vw);
-    }
-
-    .main .body .imagecontent .published,
-    .main .body .imagecontent .text
-    {
-        font-size: calc(10 / (1440 + 900) * (100vw + 100vh));
-    }
-
-    .main .body .imagecontent .author,
-    .main .body .imagecontent .company
-    {
-        font-size: calc(10 / (1440 + 900) * (100vw + 100vh));
-
-    }
-
-    .main .body .imagecontent .title
-    {
-        font-size: calc(18 / (1440 + 900) * (100vw + 100vh));
     }
 }
