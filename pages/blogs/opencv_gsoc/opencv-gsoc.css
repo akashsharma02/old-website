@@ -3,35 +3,35 @@
 
 @font-face {
     font-family: CMU-Bright;
-    src: url("../data/fonts/cmunbmr.otf") format('truetype');
+    src: url("/data/fonts/cmunbmr.otf") format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: CMU-Bright-Semibold;
-    src: url("../data/fonts/cmunbsr.otf") format('truetype');
+    src: url("/data/fonts/cmunbsr.otf") format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: CMU-Sans-Serif;
-    src: url("../data/fonts/cmunss.otf") format('truetype');
+    src: url("/data/fonts/cmunss.otf") format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: CMU-Bright-Oblique;
-    src: url("../data/fonts/cmunbmo.otf") format('truetype');
+    src: url("/data/fonts/cmunbmo.otf") format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: CMU-Serif;
-    src: url("../data/fonts/cmunrm.otf") format('truetype');
+    src: url("/data/fonts/cmunrm.otf") format('truetype');
     font-weight: bold;
     font-style: normal;
 }
