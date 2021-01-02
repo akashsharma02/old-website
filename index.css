@@ -74,7 +74,7 @@ body
 a
 {
     text-decoration: none;
-    color: #3D3D3D;
+    color: #D11D27;
 }
 
 /* Add a black background color to the top navigation */
@@ -135,7 +135,7 @@ a
 
     width: calc(300 / 1440 * 90vw);
 
-    font-family: 'CMU-Bright-Oblique', serif;
+    font-family: 'CMU-Bright-Semibold', serif;
     font-size: calc(20 / 900 * 100vh);
     color: #999999;
 }

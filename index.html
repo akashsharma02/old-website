@@ -23,26 +23,32 @@
         </script>
 
 		<link href="https://fonts.googleapis.com/css2?family=Bentham&display=swap" rel="stylesheet">
+
+        <script src="scramble.js"></script>
     </head>
     <body>
-         <!-- <div class="topnav"> -->
-         <!--  <a class="active" href="#home">About</a> -->
-         <!--  <a href="#blogs">Blog</a> -->
-         <!--  <a href="#contact">Contact</a> -->
-        <!-- </div> -->
+         <div class="topnav">
+          <a class="active" href="#about">About</a>
+          <a href="#blogs">Blogs</a>
+        </div>
         <div class="header">
 			<div class="name">
 				Akash Sharma
 			</div>
-			<div class="links">
-				<a href="mailto: akashsharma@cmu.edu">Email</a> |
+            <div class="links">
+                <font id="email" style="display:inline;">
+                    <noscript><i>Please enable Javascript to view</i></noscript>
+                </font>
+                <script>
+                emailScramble = new scrambledString(document.getElementById('email'),
+                    'emailScramble', 'smsuahaekd@rmauc.ha',
+                    [4,10,6,15,1,5,3,17,2,18,12,9,14,11,19,13,16,7,8]);
+                </script><br>
 				<a href="data/resume.pdf">CV</a> |
 				<a href="https://github.com/akashsharma02" target="_blank"><nobr>GitHub</nobr></a> |
 				<a href="https://linkedin.com/in/akashsharma02/" target="_blank">LinkedIn</a>
-			</div>
-			<div class="image">
-
-			</div>
+            </div>
+            <div class="image"></div>
 		</div>
 		<div class="about">
         I am a student at Carnegie Mellon University pursuing a Master's degree in Robotics.
@@ -108,7 +114,7 @@
                         Compositional Scalable Object SLAM
                     </div>
                     <div class="author">
-                        <span style="color:#D11D27">Akash Sharma</span>, <a href="https://dongwei.info">Wei Dong</a>, <a href="https://www.cs.cmu.edu/~kaess/">Michael Kaess</a>
+                        <span style="color:#D11D27">Akash Sharma</span>, Wei Dong, Michael Kaess
                     </div>
                     <div class="published">
                         Submitted to International Conference on Robotics and Automation (ICRA) 2021
@@ -153,7 +159,7 @@
                             Visual SLAM for Quadrotors in Indoor environments
                         </div>
                         <div class="author">
-                         <span style="color:#D11D27">Akash Sharma</span>, <a href="https://www.linkedin.com/in/shefali-vajramatti/">Shefali Vajramatti</a>
+                         <span style="color:#D11D27">Akash Sharma</span>, Shefali Vajramatti
                         </div>
                         <div class="text">
                             Built a quadrotor that can map and localize itself in a static GPS denied environment.
@@ -168,8 +174,8 @@
                         </div>
                         <div class="author">
                             <span style="color:#D11D27">Akash Sharma</span>,
-                            <a href="https://www.linkedin.com/in/adithya-r-h-536226b0/">Adithya RH</a>,
-                            <a href="https://www.linkedin.com/in/gururaj-kini-69799b114/">Gururaj Kini</a>
+                            Adithya RH,
+                            Gururaj Kini
                         </div>
                         <div class="text">
                             Built a MIP robot and implemented a PI-PD controller.
@@ -184,7 +190,7 @@
                             Automated Vision Inspection System for Cylindrical Metallic Components
                         </div>
                         <div class="author">
-                            <a href="https://www.linkedin.com/in/krithika-govindaraj">Krithika Govindaraj</a>, B Vaidya, <span style="color:#D11D27">Akash Sharma</span>, <a href="https://www.linkedin.com/in/dr-shreekanth-t-ba740a12a/">T Shreekanth</a>
+                            Krithika Govindaraj, B Vaidya, <span style="color:#D11D27">Akash Sharma</span>, T Shreekanth
                         </div>
                         <div class="published">
                             3rd International Conference on Computing and Communication (IC3 - 2018) Springer, paper
