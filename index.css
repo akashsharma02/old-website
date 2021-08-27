@@ -285,6 +285,11 @@ a
     background-image: url('data/images/object_slam.gif');
 }
 
+#inerf
+{
+    background-image: url('data/images/inerf.gif')
+}
+
 #inspectionSystem
 {
     background-image: url('data/images/vision_inspection.jpg');
